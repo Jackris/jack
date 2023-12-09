@@ -45,12 +45,6 @@ class mycompany_dealer extends CModule
             $this->InstallEvents();
             $this->InstallFiles();
             $this->InstallDb();
-
-            $eventManager = \Bitrix\Main\EventManager::getInstance();
-            //$eventManager->registerEventHandlerCompatible("pull", "OnGetDependentModule", $this->MODULE_ID, "\\Mcart\\Blago\\Events", "OnGetPushAndPullDependentModule");
-
-            $GLOBALS["errors"] = $errors;
-
         }
     }
 
@@ -68,7 +62,14 @@ class mycompany_dealer extends CModule
 
     function InstallEvents()
     {
-        $manager = \Bitrix\Main\EventManager::getInstance();
+        //$manager = \Bitrix\Main\EventManager::getInstance();
+/*        \Bitrix\Main\EventManager::getInstance()->registerEventHandler(
+            self::$MODULE_ID,
+            'Mycompany\Dealer\ORM\DealerToCarTable::onBeforeAdd',
+            self::$MODULE_ID,
+            self::class,
+            'onVirtualClassBuildList'
+        );*/
         return true;
     }
 
@@ -79,37 +80,10 @@ class mycompany_dealer extends CModule
 
     function UnInstallFiles($arParams = array())
     {
-        DeleteDirFiles(
-            $_SERVER["DOCUMENT_ROOT"] . "/local/modules/mycompany.dealer/install/admin/",
-            $_SERVER["DOCUMENT_ROOT"] . "/bitrix/admin/"
-        );
-        DeleteDirFiles(
-            $_SERVER["DOCUMENT_ROOT"] . "/local/modules/mycompany.dealer/install/panel/main/",
-            $_SERVER["DOCUMENT_ROOT"] . "/bitrix/panel/main/"
-        );
-        DeleteDirFilesEx("/bitrix/images/mcart.blago");
     }
 
     function InstallFiles($arParams = array())
     {
-        CopyDirFiles(
-            $_SERVER["DOCUMENT_ROOT"] . "/local/modules/mycompany.dealer/install/admin",
-            $_SERVER["DOCUMENT_ROOT"] . "/bitrix/admin",
-            true,
-            true
-        );
-        CopyDirFiles(
-            $_SERVER["DOCUMENT_ROOT"] . "/local/modules/mycompany.dealer/install/panel",
-            $_SERVER["DOCUMENT_ROOT"] . "/bitrix/panel",
-            true,
-            true
-        );
-        CopyDirFiles(
-            $_SERVER["DOCUMENT_ROOT"] . "/local/modules/mycompany.dealer/install/images",
-            $_SERVER["DOCUMENT_ROOT"] . "/bitrix/images",
-            true,
-            true
-        );
     }
     function InstallDb()
     {

@@ -41,7 +41,6 @@
       <path value="$PROJECT_DIR$/mcart.xls/install/modules/mcart.xls/vendor/markbaker/complex" />
     </include_path>
   </component>
-  <component name="PhpProjectSharedConfiguration" php_language_level="8.2" />
   <component name="PhpStanOptionsConfiguration">
     <option name="transferred" value="true" />
   </component>

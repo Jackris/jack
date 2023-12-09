@@ -3,8 +3,8 @@
 namespace Mycompany\Dealer\ORM;
 
 use Bitrix\Main\Entity;
-
-class DealerTable extends Entity\DataManager
+use Bitrix\Main\ORM\Fields\Relations\ManyToMany;
+class DealerTable extends \Bitrix\Main\ORM\Data\DataManager
 {
 
     public static function getTableName()
@@ -32,6 +32,12 @@ class DealerTable extends Entity\DataManager
             new Entity\TextField('ACTIVITY_TIME', array(
                 'title' => 'Дата и время активности',
             )),
+            (new ManyToMany('CARS', CarModelTable::class))
+                ->configureTableName('dealer_to_car')
+                ->configureLocalPrimary('ID', 'DEALER_ID')
+                ->configureLocalReference('DEALER')
+                ->configureRemotePrimary('ID', 'MODEL_ID')
+                ->configureRemoteReference('CAR')
         );
     }
 }

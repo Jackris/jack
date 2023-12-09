@@ -34,7 +34,7 @@ class BP extends Controller
         ];
     }
 
-    public function getModelsAction($taskId)
+    public function getModelsAction(int $dealerID)
     {
     /*use Bitrix\Main\Loader;
         Loader::includeModule('mycompany.dealer');*/
