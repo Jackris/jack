@@ -110,7 +110,7 @@ class mycompany_dealer extends CModule
 
     function UnInstallDB()
     {
-        /*Loader::includeModule($this->MODULE_ID);
+        Loader::includeModule($this->MODULE_ID);
         \Bitrix\Main\Application::getConnection(\Mycompany\Dealer\ORM\CarModelTable::getConnectionName())
             ->queryExecute('drop table if exists ' . \Bitrix\Main\Entity\Base::getInstance('\Mycompany\Dealer\ORM\CarModelTable')->getDBTableName());
 
@@ -118,7 +118,7 @@ class mycompany_dealer extends CModule
             ->queryExecute('drop table if exists ' . \Bitrix\Main\Entity\Base::getInstance('\Mycompany\Dealer\ORM\DealerTable')->getDBTableName());
 
         \Bitrix\Main\Application::getConnection(\Mycompany\Dealer\ORM\DealerToCarTable::getConnectionName())
-            ->queryExecute('drop table if exists ' . \Bitrix\Main\Entity\Base::getInstance('\Mycompany\Dealer\ORM\DealerToCarTable')->getDBTableName());*/
+            ->queryExecute('drop table if exists ' . \Bitrix\Main\Entity\Base::getInstance('\Mycompany\Dealer\ORM\DealerToCarTable')->getDBTableName());
 
         ModuleManager::unRegisterModule($this->MODULE_ID);
     }

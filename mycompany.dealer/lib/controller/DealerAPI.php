@@ -31,6 +31,7 @@ class DealerAPI extends Controller
 
     public static function getModelsAction(string $dealerName)
     {
+        $result = [];
         $arDealers = \Mycompany\Dealer\ORM\DealerTable::getList([
             'select' => [
                 'NAME','CARS'
@@ -41,8 +42,9 @@ class DealerAPI extends Controller
             ]
         ]);
         while ($dealer = $arDealers->fetch()){
-            print_r($dealer);
+            $result[] = $dealer['MYCOMPANY_DEALER_ORM_DEALER_CARS_MODEL'];
         }
-
+        print_r($result);
+        return $result;
     }
 }

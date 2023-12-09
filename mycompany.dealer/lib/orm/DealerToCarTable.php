@@ -24,7 +24,7 @@ class DealerToCarTable extends Entity\DataManager
                 ->configureJoinType('inner'),
             (new Entity\IntegerField('MODEL_ID'))
                 ->configurePrimary(true),
-            (new Reference('MODEL', CarModelTable::class,
+            (new Reference('CAR', CarModelTable::class,
                 Join::on('this.MODEL_ID', 'ref.ID')))
                 ->configureJoinType('inner'),
         ]);
@@ -42,31 +42,9 @@ class DealerToCarTable extends Entity\DataManager
         $count = $entityDataClass::getCount(['DEALER_ID' => $arFields['DEALER_ID']]);
         $result = new \Bitrix\Main\Entity\EventResult();
         if ($count >= $settingsCount) {
-            $result->addError(new Entity\EntityError('Невозможно обновить запись'));
+            $result->addError(new Entity\EntityError('Максимальное количество моделей достигнуто для данного дилера'));
             return $result;
         }
         return $result;
     }
 }
-
-/*\Mycompany\Dealer\ORM\CarModelTable::add([
-    'MODEL' => 'weqweq', 'YEAR_MADY' => 2015, 'QUANTITY' => 5
-]);
-\Mycompany\Dealer\ORM\DealerTable::add([
-    'NAME' => 'name', 'ADDRESS' => 'addqweqeq', 'COUNT_MANAGAERS' => 5
-]);*/
-
-/*use Bitrix\Main\Loader;
-Loader::includeModule('mycompany.dealer');
-
-
-$car = \Mycompany\Dealer\ORM\CarModelTable::getByPrimary(1)->fetchObject();
-$dealer = \Mycompany\Dealer\ORM\DealerTable::getByPrimary(1)->fetchObject();
-$car->addToDealers($dealer);
-$car->save();
-\Mycompany\Dealer\ORM\CarModelTable::add([
-    'MODEL' => 'weqweq', 'YEAR_MADY' => 2015, 'QUANTITY' => 5
-]);
-\Mycompany\Dealer\ORM\DealerTable::add([
-    'NAME' => 'name', 'ADDRESS' => 'addqweqeq', 'COUNT_MANAGAERS' => 5
-]);*/
