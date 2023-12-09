@@ -45,6 +45,7 @@ class mycompany_dealer extends CModule
             $this->InstallEvents();
             $this->InstallFiles();
             $this->InstallDb();
+            $this->addAgent();
         }
     }
 
@@ -56,20 +57,13 @@ class mycompany_dealer extends CModule
             $this->UnInstallEvents();
             $this->UnInstallFiles();
             $this->UnInstallDB();
+            $this->deleteAgent();
             COption::RemoveOption($this->MODULE_ID);
         }
     }
 
     function InstallEvents()
     {
-        //$manager = \Bitrix\Main\EventManager::getInstance();
-/*        \Bitrix\Main\EventManager::getInstance()->registerEventHandler(
-            self::$MODULE_ID,
-            'Mycompany\Dealer\ORM\DealerToCarTable::onBeforeAdd',
-            self::$MODULE_ID,
-            self::class,
-            'onVirtualClassBuildList'
-        );*/
         return true;
     }
 
@@ -116,7 +110,7 @@ class mycompany_dealer extends CModule
 
     function UnInstallDB()
     {
-        Loader::includeModule($this->MODULE_ID);
+        /*Loader::includeModule($this->MODULE_ID);
         \Bitrix\Main\Application::getConnection(\Mycompany\Dealer\ORM\CarModelTable::getConnectionName())
             ->queryExecute('drop table if exists ' . \Bitrix\Main\Entity\Base::getInstance('\Mycompany\Dealer\ORM\CarModelTable')->getDBTableName());
 
@@ -124,8 +118,33 @@ class mycompany_dealer extends CModule
             ->queryExecute('drop table if exists ' . \Bitrix\Main\Entity\Base::getInstance('\Mycompany\Dealer\ORM\DealerTable')->getDBTableName());
 
         \Bitrix\Main\Application::getConnection(\Mycompany\Dealer\ORM\DealerToCarTable::getConnectionName())
-            ->queryExecute('drop table if exists ' . \Bitrix\Main\Entity\Base::getInstance('\Mycompany\Dealer\ORM\DealerToCarTable')->getDBTableName());
+            ->queryExecute('drop table if exists ' . \Bitrix\Main\Entity\Base::getInstance('\Mycompany\Dealer\ORM\DealerToCarTable')->getDBTableName());*/
 
         ModuleManager::unRegisterModule($this->MODULE_ID);
     }
+    public function addAgent()
+    {
+        $stmp = AddToTimeStamp(array("HH"=>24),time());
+        $time = ConvertTimeStamp($stmp) . ' 08:00:00';
+        \CAgent::AddAgent(
+            "Mycompany\Dealer\Agents\CheckActivity::run();",
+            "mycompany.dealer",
+            "N",
+            86400,
+            "",
+            "Y",
+            $time,
+            10
+        );
+    }
+
+    public function deleteAgent()
+    {
+        $curr_agent = \CAgent::GetList(
+            [],
+            ["NAME" => "Mycompany\Dealer\Agents\CheckActivity::run();"]
+        )->Fetch();
+        CAgent::Delete($curr_agent['ID']);
+    }
+
 }
