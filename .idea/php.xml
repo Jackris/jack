@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MessDetectorOptionsConfiguration">
+    <option name="transferred" value="true" />
+  </component>
+  <component name="PHPCSFixerOptionsConfiguration">
+    <option name="transferred" value="true" />
+  </component>
+  <component name="PHPCodeSnifferOptionsConfiguration">
+    <option name="highlightLevel" value="WARNING" />
+    <option name="transferred" value="true" />
+  </component>
+  <component name="PhpIncludePathManager">
+    <include_path>
+      <path value="$PROJECT_DIR$/mcart.xls/vendor/composer" />
+      <path value="$PROJECT_DIR$/mcart.xls/vendor/ezyang/htmlpurifier" />
+      <path value="$PROJECT_DIR$/mcart.xls/vendor/cache/tag-interop" />
+      <path value="$PROJECT_DIR$/mcart.xls/vendor/cache/simple-cache-bridge" />
+      <path value="$PROJECT_DIR$/mcart.xls/vendor/cache/memcache-adapter" />
+      <path value="$PROJECT_DIR$/mcart.xls/vendor/cache/adapter-common" />
+      <path value="$PROJECT_DIR$/mcart.xls/vendor/psr/simple-cache" />
+      <path value="$PROJECT_DIR$/mcart.xls/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/mcart.xls/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/mcart.xls/vendor/psr/http-factory" />
+      <path value="$PROJECT_DIR$/mcart.xls/vendor/psr/http-client" />
+      <path value="$PROJECT_DIR$/mcart.xls/vendor/psr/cache" />
+      <path value="$PROJECT_DIR$/mcart.xls/vendor/phpoffice/phpspreadsheet" />
+      <path value="$PROJECT_DIR$/mcart.xls/vendor/markbaker/matrix" />
+      <path value="$PROJECT_DIR$/mcart.xls/vendor/markbaker/complex" />
+      <path value="$PROJECT_DIR$/mcart.xls/vendor/maennchen/zipstream-php" />
+      <path value="$PROJECT_DIR$/mcart.xls/install/modules/mcart.xls/vendor/composer" />
+      <path value="$PROJECT_DIR$/mcart.xls/install/modules/mcart.xls/vendor/cache/tag-interop" />
+      <path value="$PROJECT_DIR$/mcart.xls/install/modules/mcart.xls/vendor/cache/simple-cache-bridge" />
+      <path value="$PROJECT_DIR$/mcart.xls/install/modules/mcart.xls/vendor/cache/memcache-adapter" />
+      <path value="$PROJECT_DIR$/mcart.xls/install/modules/mcart.xls/vendor/cache/adapter-common" />
+      <path value="$PROJECT_DIR$/mcart.xls/install/modules/mcart.xls/vendor/psr/simple-cache" />
+      <path value="$PROJECT_DIR$/mcart.xls/install/modules/mcart.xls/vendor/phpoffice/phpspreadsheet" />
+      <path value="$PROJECT_DIR$/mcart.xls/install/modules/mcart.xls/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/mcart.xls/install/modules/mcart.xls/vendor/markbaker/matrix" />
+      <path value="$PROJECT_DIR$/mcart.xls/install/modules/mcart.xls/vendor/psr/cache" />
+      <path value="$PROJECT_DIR$/mcart.xls/install/modules/mcart.xls/vendor/markbaker/complex" />
+    </include_path>
+  </component>
+  <component name="PhpProjectSharedConfiguration" php_language_level="8.2" />
+  <component name="PhpStanOptionsConfiguration">
+    <option name="transferred" value="true" />
+  </component>
+  <component name="PsalmOptionsConfiguration">
+    <option name="transferred" value="true" />
+  </component>
+</project>
