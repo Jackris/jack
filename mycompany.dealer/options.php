@@ -28,7 +28,7 @@ if ($MOD_RIGHT >= 'Y' || $USER->IsAdmin()) {
             'OPTIONS' => array(
                 array(
                     'max_count_models',
-                    GetMessage('MCART_SEARCH_TAB_1_length_word'),
+                    'Максимальное количества моделей машин, которые может продавать один дилер',
                     Option::get($MODULE_ID, "max_count_models", 5),
                     array('text'),
                 ),

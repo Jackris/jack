@@ -1,17 +1,19 @@
 <?php
 
-namespace Mycompany\Dealer\ORM;
+namespace Mycompany\Dealer;
 
 use Bitrix\Main\Config\Option;
 use Bitrix\Main\Entity;
 use Bitrix\Main\ORM\Fields\Relations\ManyToMany;
+
+IncludeModuleLangFile(__FILE__);
 
 class CarModelTable extends \Bitrix\Main\ORM\Data\DataManager
 {
 
     public static function getTableName()
     {
-        return 'car_model';
+        return 'mcart_car_model';
     }
 
     public static function getMap()
@@ -20,16 +22,16 @@ class CarModelTable extends \Bitrix\Main\ORM\Data\DataManager
             new Entity\IntegerField('ID', array(
                 'primary' => true,
                 'autocomplete' => true,
-                'title' => 'Идентификатор',
+                'title' => GetMessage("MCART_CAR_ID")
             )),
             new Entity\StringField('MODEL', array(
-                'title' => 'Модель машины',
+                'title' => GetMessage("MCART_CAR_MODEL")
             )),
             new Entity\IntegerField('YEAR_MADY', array(
-                'title' => 'Год производства',
+                'title' => GetMessage("MCART_CAR_YEAR")
             )),
             new Entity\IntegerField('CAPACITY', array(
-                'title' => 'Объем двигателя',
+                'title' => GetMessage("MCART_CAR_CAPACITY")
             )),
             (new ManyToMany('DEALERS', DealerTable::class))
                 ->configureTableName('dealer_to_car')
@@ -39,6 +41,12 @@ class CarModelTable extends \Bitrix\Main\ORM\Data\DataManager
                 ->configureRemoteReference('DEALER')
         );
     }
+
+    /**
+     * Удаление связанных позиций у дилера
+     * @param Entity\Event $event
+     * @return Entity\EventResult
+     */
     public static function onAfterDelete(Entity\Event $event)
     {
         $entity = $event->getEntity();

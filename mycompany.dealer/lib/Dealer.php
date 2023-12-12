@@ -1,15 +1,18 @@
 <?php
 
-namespace Mycompany\Dealer\ORM;
+namespace Mycompany\Dealer;
 
 use Bitrix\Main\Entity;
 use Bitrix\Main\ORM\Fields\Relations\ManyToMany;
+
+IncludeModuleLangFile(__FILE__);
+
 class DealerTable extends \Bitrix\Main\ORM\Data\DataManager
 {
 
     public static function getTableName()
     {
-        return 'dealer';
+        return 'mcart_dealer';
     }
 
     public static function getMap()
@@ -21,16 +24,16 @@ class DealerTable extends \Bitrix\Main\ORM\Data\DataManager
             )),
             new Entity\StringField('NAME', array(
                 'required' => true,
-                'title' => 'Название',
+                'title' => GetMessage("MCART_DEALER_NAME")
             )),
             new Entity\TextField('ADDRESS', array(
-                'title' => 'Адрес',
+                'title' => GetMessage("MCART_DEALER_ADDRESS")
             )),
             new Entity\IntegerField('COUNT_MANAGERS', array(
-                'title' => 'Количество менеджеров в штате',
+                'title' => GetMessage("MCART_DEALER_MANAGERS")
             )),
             new Entity\TextField('ACTIVITY_TIME', array(
-                'title' => 'Дата и время активности',
+                'title' => GetMessage("MCART_DEALER_ACTIVITY")
             )),
             (new ManyToMany('CARS', CarModelTable::class))
                 ->configureTableName('dealer_to_car')

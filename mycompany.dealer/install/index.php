@@ -7,17 +7,18 @@ use Bitrix\Main\ModuleManager;
 
 IncludeModuleLangFile(__FILE__);
 
+/**
+ * Модуль, создающий связанные между собой ДИЛЕРОВ и МОДЕЛЕЙ авто, которые они продают
+ */
 class mycompany_dealer extends CModule
 {
-    var $MODULE_ID = "mycompany.dealer";
-    var $MODULE_VERSION;
+    public $MODULE_ID = "mycompany.dealer";
+    public $MODULE_VERSION;
     var $MODULE_VERSION_DATE;
     var $MODULE_NAME;
     var $MODULE_DESCRIPTION;
     var $PARTNER_NAME;
     var $PARTNER_URI;
-
-    var $MODULE_GROUP_RIGHTS = "Y";
 
     function __construct()
     {
@@ -36,6 +37,10 @@ class mycompany_dealer extends CModule
         $this->PARTNER_URI = 'джакрис.рф';
     }
 
+    /**
+     * Установка модуля
+     * @return void
+     */
     function DoInstall()
     {
         global $APPLICATION;
@@ -49,6 +54,10 @@ class mycompany_dealer extends CModule
         }
     }
 
+    /**
+     * Удаление модуля
+     * @return void
+     */
     function DoUninstall()
     {
         global $APPLICATION;
@@ -62,69 +71,86 @@ class mycompany_dealer extends CModule
         }
     }
 
-    function InstallEvents()
-    {
-        return true;
-    }
-
-    function UnInstallEvents()
-    {
-        $manager = \Bitrix\Main\EventManager::getInstance();
-    }
-
-    function UnInstallFiles($arParams = array())
-    {
-    }
-
-    function InstallFiles($arParams = array())
-    {
-    }
+    /**
+     * Создание таблиц
+     * @return void
+     * @throws \Bitrix\Main\ArgumentException
+     * @throws \Bitrix\Main\LoaderException
+     * @throws \Bitrix\Main\SystemException
+     */
     function InstallDb()
     {
         Loader::includeModule($this->MODULE_ID);
 
         if (
-            !\Bitrix\Main\Application::getConnection(\Mycompany\Dealer\ORM\CarModelTable::getConnectionName())
-                ->isTableExists(\Bitrix\Main\Entity\Base::getInstance(\Mycompany\Dealer\ORM\CarModelTable::class)
-                    ->getDBTableName())
+            !\Bitrix\Main\Application::getConnection(\Mycompany\Dealer\CarModelTable::getConnectionName())
+                ->isTableExists(
+                    \Bitrix\Main\Entity\Base::getInstance(\Mycompany\Dealer\CarModelTable::class)
+                        ->getDBTableName()
+                )
         ) {
-            \Bitrix\Main\Entity\Base::getInstance(\Mycompany\Dealer\ORM\CarModelTable::class)->createDbTable();
+            \Bitrix\Main\Entity\Base::getInstance(\Mycompany\Dealer\CarModelTable::class)->createDbTable();
         }
 
         if (
-            !\Bitrix\Main\Application::getConnection(\Mycompany\Dealer\ORM\DealerTable::getConnectionName())
-                ->isTableExists(\Bitrix\Main\Entity\Base::getInstance(\Mycompany\Dealer\ORM\DealerTable::class)
-                    ->getDBTableName())
+            !\Bitrix\Main\Application::getConnection(\Mycompany\Dealer\DealerTable::getConnectionName())
+                ->isTableExists(
+                    \Bitrix\Main\Entity\Base::getInstance(\Mycompany\Dealer\DealerTable::class)
+                        ->getDBTableName()
+                )
         ) {
-            \Bitrix\Main\Entity\Base::getInstance(\Mycompany\Dealer\ORM\DealerTable::class)->createDbTable();
+            \Bitrix\Main\Entity\Base::getInstance(\Mycompany\Dealer\DealerTable::class)->createDbTable();
         }
 
         if (
-            !\Bitrix\Main\Application::getConnection(\Mycompany\Dealer\ORM\DealerToCarTable::getConnectionName())
-                ->isTableExists(\Bitrix\Main\Entity\Base::getInstance(\Mycompany\Dealer\ORM\DealerToCarTable::class)
-                    ->getDBTableName())
+            !\Bitrix\Main\Application::getConnection(\Mycompany\Dealer\DealerToCarTable::getConnectionName())
+                ->isTableExists(
+                    \Bitrix\Main\Entity\Base::getInstance(\Mycompany\Dealer\DealerToCarTable::class)
+                        ->getDBTableName()
+                )
         ) {
-            \Bitrix\Main\Entity\Base::getInstance(\Mycompany\Dealer\ORM\DealerToCarTable::class)->createDbTable();
+            \Bitrix\Main\Entity\Base::getInstance(\Mycompany\Dealer\DealerToCarTable::class)->createDbTable();
         }
     }
 
+    /**
+     * Удаление таблиц
+     * @return void
+     */
     function UnInstallDB()
     {
         Loader::includeModule($this->MODULE_ID);
-        \Bitrix\Main\Application::getConnection(\Mycompany\Dealer\ORM\CarModelTable::getConnectionName())
-            ->queryExecute('drop table if exists ' . \Bitrix\Main\Entity\Base::getInstance('\Mycompany\Dealer\ORM\CarModelTable')->getDBTableName());
+        \Bitrix\Main\Application::getConnection(\Mycompany\Dealer\CarModelTable::getConnectionName())
+            ->queryExecute(
+                'drop table if exists ' . \Bitrix\Main\Entity\Base::getInstance(
+                    '\Mycompany\Dealer\CarModelTable'
+                )->getDBTableName()
+            );
 
-        \Bitrix\Main\Application::getConnection(\Mycompany\Dealer\ORM\DealerTable::getConnectionName())
-            ->queryExecute('drop table if exists ' . \Bitrix\Main\Entity\Base::getInstance('\Mycompany\Dealer\ORM\DealerTable')->getDBTableName());
+        \Bitrix\Main\Application::getConnection(\Mycompany\Dealer\DealerTable::getConnectionName())
+            ->queryExecute(
+                'drop table if exists ' . \Bitrix\Main\Entity\Base::getInstance(
+                    '\Mycompany\Dealer\DealerTable'
+                )->getDBTableName()
+            );
 
-        \Bitrix\Main\Application::getConnection(\Mycompany\Dealer\ORM\DealerToCarTable::getConnectionName())
-            ->queryExecute('drop table if exists ' . \Bitrix\Main\Entity\Base::getInstance('\Mycompany\Dealer\ORM\DealerToCarTable')->getDBTableName());
+        \Bitrix\Main\Application::getConnection(\Mycompany\Dealer\DealerToCarTable::getConnectionName())
+            ->queryExecute(
+                'drop table if exists ' . \Bitrix\Main\Entity\Base::getInstance(
+                    '\Mycompany\Dealer\DealerToCarTable'
+                )->getDBTableName()
+            );
 
         ModuleManager::unRegisterModule($this->MODULE_ID);
     }
+
+    /**
+     * Добавление агентов
+     * @return void
+     */
     public function addAgent()
     {
-        $stmp = AddToTimeStamp(array("HH"=>24),time());
+        $stmp = AddToTimeStamp(array("HH" => 24), time());
         $time = ConvertTimeStamp($stmp) . ' 08:00:00';
         \CAgent::AddAgent(
             "Mycompany\Dealer\Agents\CheckActivity::run();",
@@ -138,13 +164,13 @@ class mycompany_dealer extends CModule
         );
     }
 
+    /**
+     * Удаление агентов
+     * @return void
+     */
     public function deleteAgent()
     {
-        $curr_agent = \CAgent::GetList(
-            [],
-            ["NAME" => "Mycompany\Dealer\Agents\CheckActivity::run();"]
-        )->Fetch();
-        CAgent::Delete($curr_agent['ID']);
+        CAgent::RemoveModuleAgents($this->MODULE_ID);
     }
 
 }

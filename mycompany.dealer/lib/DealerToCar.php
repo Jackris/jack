@@ -1,6 +1,6 @@
 <?php
 
-namespace Mycompany\Dealer\ORM;
+namespace Mycompany\Dealer;
 
 use Bitrix\Main\Config\Option;
 use Bitrix\Main\Entity;
@@ -10,26 +10,31 @@ use Bitrix\Main\ORM\Fields\Relations\Reference;
 class DealerToCarTable extends Entity\DataManager
 {
     private const MODULE_ID = "mycompany.dealer";
+
     public static function getTableName()
     {
-        return 'dealer_to_car';
+        return 'mcart_dealer_to_car';
     }
 
     public static function getMap()
     {
-        return([
+        return ([
             (new Entity\IntegerField('DEALER_ID')),
-            (new Reference('DEALER', DealerTable::class,
-                Join::on('this.DEALER_ID', 'ref.ID')))
+            (new Reference(
+                'DEALER', DealerTable::class,
+                Join::on('this.DEALER_ID', 'ref.ID')
+            ))
                 ->configureJoinType('inner'),
             (new Entity\IntegerField('MODEL_ID'))
                 ->configurePrimary(true),
-            (new Reference('CAR', CarModelTable::class,
-                Join::on('this.MODEL_ID', 'ref.ID')))
+            (new Reference(
+                'CAR', CarModelTable::class,
+                Join::on('this.MODEL_ID', 'ref.ID')
+            ))
                 ->configureJoinType('inner'),
         ]);
-
     }
+
     public static function onBeforeAdd(Entity\Event $event)
     {
         $entity = $event->getEntity();

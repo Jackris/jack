@@ -1,9 +1,0 @@
-<?
-$MESS['MCART_BLAGO_ESTAFF_LOGIN'] = "Логин";
-$MESS['MCART_BLAGO_ESTAFF_PASSWORD'] = "Пароль";
-$MESS['MCART_BLAGO_ESTAFF_NAME_TITLE'] = "Авторизация";
-$MESS['MCART_BLAGO_ESTAFF_SAVE'] = "Сохранить";
-$MESS['MCART_BLAGO_ESTAFF_TITLE'] = "Настройки E-Staff";
-$MESS['MCART_BLAGO_ESTAFF_ERROR'] = "Ошибка";
-$MESS['MCART_BLAGO_ESTAFF_SERVER'] = "Сервер";
-$MESS['MCART_BLAGO_ESTAFF_LIST'] = "Список компенсаций";
