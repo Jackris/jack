@@ -1,6 +1,6 @@
 <?php
 
-namespace Mycompany\Dealer;
+namespace Mycompany\Dealer\ORM;
 
 use Bitrix\Main\Entity;
 use Bitrix\Main\ORM\Fields\Relations\ManyToMany;

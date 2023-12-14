@@ -1,6 +1,6 @@
 <?php
 
-namespace Mycompany\Dealer;
+namespace Mycompany\Dealer\ORM;
 
 use Bitrix\Main\Config\Option;
 use Bitrix\Main\Entity;

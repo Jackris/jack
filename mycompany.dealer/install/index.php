@@ -83,33 +83,33 @@ class mycompany_dealer extends CModule
         Loader::includeModule($this->MODULE_ID);
 
         if (
-            !\Bitrix\Main\Application::getConnection(\Mycompany\Dealer\CarModelTable::getConnectionName())
+            !\Bitrix\Main\Application::getConnection(\Mycompany\Dealer\ORM\CarModelTable::getConnectionName())
                 ->isTableExists(
-                    \Bitrix\Main\Entity\Base::getInstance(\Mycompany\Dealer\CarModelTable::class)
+                    \Bitrix\Main\Entity\Base::getInstance(\Mycompany\Dealer\ORM\CarModelTable::class)
                         ->getDBTableName()
                 )
         ) {
-            \Bitrix\Main\Entity\Base::getInstance(\Mycompany\Dealer\CarModelTable::class)->createDbTable();
+            \Bitrix\Main\Entity\Base::getInstance(\Mycompany\Dealer\ORM\CarModelTable::class)->createDbTable();
         }
 
         if (
-            !\Bitrix\Main\Application::getConnection(\Mycompany\Dealer\DealerTable::getConnectionName())
+            !\Bitrix\Main\Application::getConnection(\Mycompany\Dealer\ORM\DealerTable::getConnectionName())
                 ->isTableExists(
-                    \Bitrix\Main\Entity\Base::getInstance(\Mycompany\Dealer\DealerTable::class)
+                    \Bitrix\Main\Entity\Base::getInstance(\Mycompany\Dealer\ORM\DealerTable::class)
                         ->getDBTableName()
                 )
         ) {
-            \Bitrix\Main\Entity\Base::getInstance(\Mycompany\Dealer\DealerTable::class)->createDbTable();
+            \Bitrix\Main\Entity\Base::getInstance(\Mycompany\Dealer\ORM\DealerTable::class)->createDbTable();
         }
 
         if (
-            !\Bitrix\Main\Application::getConnection(\Mycompany\Dealer\DealerToCarTable::getConnectionName())
+            !\Bitrix\Main\Application::getConnection(\Mycompany\Dealer\ORM\DealerToCarTable::getConnectionName())
                 ->isTableExists(
-                    \Bitrix\Main\Entity\Base::getInstance(\Mycompany\Dealer\DealerToCarTable::class)
+                    \Bitrix\Main\Entity\Base::getInstance(\Mycompany\Dealer\ORM\DealerToCarTable::class)
                         ->getDBTableName()
                 )
         ) {
-            \Bitrix\Main\Entity\Base::getInstance(\Mycompany\Dealer\DealerToCarTable::class)->createDbTable();
+            \Bitrix\Main\Entity\Base::getInstance(\Mycompany\Dealer\ORM\DealerToCarTable::class)->createDbTable();
         }
     }
 
@@ -120,24 +120,24 @@ class mycompany_dealer extends CModule
     function UnInstallDB()
     {
         Loader::includeModule($this->MODULE_ID);
-        \Bitrix\Main\Application::getConnection(\Mycompany\Dealer\CarModelTable::getConnectionName())
+        \Bitrix\Main\Application::getConnection(\Mycompany\Dealer\ORM\CarModelTable::getConnectionName())
             ->queryExecute(
                 'drop table if exists ' . \Bitrix\Main\Entity\Base::getInstance(
-                    '\Mycompany\Dealer\CarModelTable'
+                    '\Mycompany\Dealer\ORM\CarModelTable'
                 )->getDBTableName()
             );
 
-        \Bitrix\Main\Application::getConnection(\Mycompany\Dealer\DealerTable::getConnectionName())
+        \Bitrix\Main\Application::getConnection(\Mycompany\Dealer\ORM\DealerTable::getConnectionName())
             ->queryExecute(
                 'drop table if exists ' . \Bitrix\Main\Entity\Base::getInstance(
-                    '\Mycompany\Dealer\DealerTable'
+                    '\Mycompany\Dealer\ORM\DealerTable'
                 )->getDBTableName()
             );
 
-        \Bitrix\Main\Application::getConnection(\Mycompany\Dealer\DealerToCarTable::getConnectionName())
+        \Bitrix\Main\Application::getConnection(\Mycompany\Dealer\ORM\DealerToCarTable::getConnectionName())
             ->queryExecute(
                 'drop table if exists ' . \Bitrix\Main\Entity\Base::getInstance(
-                    '\Mycompany\Dealer\DealerToCarTable'
+                    '\Mycompany\Dealer\ORM\DealerToCarTable'
                 )->getDBTableName()
             );
 

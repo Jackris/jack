@@ -1,6 +1,6 @@
 <?php
 
-namespace Mycompany\Dealer;
+namespace Mycompany\Dealer\Agents;
 
 use \Bitrix\Main\Loader;
 
