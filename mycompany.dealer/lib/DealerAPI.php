@@ -7,7 +7,7 @@ use Bitrix\Main\Engine\Controller;
 
 class DealerAPI extends Controller
 {
-    public static $MODULE_ID = "mycompany.dealer";
+    use ModuleTrait;
 
     public function __construct(Request $request = null)
     {
@@ -40,6 +40,7 @@ class DealerAPI extends Controller
     public static function getModelsAction(string $dealerName)
     {
         $result = [];
+        print_r(self::MODULE_ID);
         $arDealers = \Mycompany\Dealer\ORM\DealerTable::getList([
             'select' => [
                 'NAME',

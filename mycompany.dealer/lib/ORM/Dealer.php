@@ -32,8 +32,11 @@ class DealerTable extends \Bitrix\Main\ORM\Data\DataManager
             new Entity\IntegerField('COUNT_MANAGERS', array(
                 'title' => GetMessage("MCART_DEALER_MANAGERS")
             )),
-            new Entity\TextField('ACTIVITY_TIME', array(
-                'title' => GetMessage("MCART_DEALER_ACTIVITY")
+            new Entity\DateTimeField('ACTIVITY_TIME_START', array(
+                'title' => GetMessage("MCART_DEALER_ACTIVITY_START")
+            )),
+            new Entity\DateTimeField('ACTIVITY_TIME_END', array(
+                'title' => GetMessage("MCART_DEALER_ACTIVITY_END")
             )),
             (new ManyToMany('CARS', CarModelTable::class))
                 ->configureTableName('dealer_to_car')
