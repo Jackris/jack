@@ -10,7 +10,14 @@
         </fileTransfer>
       </webServer>
       <webServer id="7f51e8b3-8371-4165-a42d-58926468e1c4" name="джакрис.рф">
-        <fileTransfer rootFolder="/home/host1816851/xn--80ahgjj0bi.xn--p1ai/htdocs/www/" accessType="SFTP" host="xn--80ahgjj0bi.xn--p1ai" port="1024" sshConfigId="cf013c53-71e6-4afe-bff3-6d4605daf52f" sshConfig="host1816851@xn--80ahgjj0bi.xn--p1ai:1024 key" keyPair="true">
+        <fileTransfer rootFolder="/home/host1816851/xn--80ahgjj0bi.xn--p1ai/htdocs/www/" accessType="SFTP" host="jackris.ru" port="1024" sshConfigId="f8e51be8-d7d5-4c71-8b23-2ebb150484e7" sshConfig="host1816851@jackris.ru:1024 key" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+      <webServer id="76dc7b20-0077-4f72-bd58-7d469e0b3d50" name="b24">
+        <fileTransfer rootFolder="/home/host1816851/host1816851.hostland.pro/htdocs/www" accessType="SFTP" host="jackris.ru" port="1024" sshConfigId="f8e51be8-d7d5-4c71-8b23-2ebb150484e7" sshConfig="host1816851@jackris.ru:1024 key" keyPair="true">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>

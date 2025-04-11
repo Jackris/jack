@@ -5,9 +5,7 @@
       <sshConfig host="jackris.ru" id="f8e51be8-d7d5-4c71-8b23-2ebb150484e7" keyPath="C:\Users\Jackris\.ssh\key" port="1024" nameFormat="DESCRIPTIVE" username="host1816851" useOpenSSHConfig="false" />
       <sshConfig host="xn--80ahgjj0bi.xn--p1ai" id="cf013c53-71e6-4afe-bff3-6d4605daf52f" keyPath="C:\Users\Jackris\.ssh\id_rsa" port="1024" nameFormat="DESCRIPTIVE" username="host1816851" useOpenSSHConfig="false" />
       <sshConfig host="185.221.214.75" id="2de35062-121f-44eb-b3e0-9ee965b079d2" keyPath="C:\Users\Jackris\.ssh\key" port="22" nameFormat="DESCRIPTIVE" username="root" useOpenSSHConfig="false" />
-      <sshConfig authType="PASSWORD" id="a21b4eeb-c4c7-45e9-be1c-6db65bae64be" customName="vds" nameFormat="CUSTOM" useOpenSSHConfig="true">
-        <option name="customName" value="vds" />
-      </sshConfig>
+      <sshConfig host="mcart-cifra-dev-03.mcart.tech" id="acb87d34-6b6c-49ad-8871-f9b317a32966" keyPath="C:\Users\Jackris\.ssh\sergei.ppk" port="22" nameFormat="DESCRIPTIVE" username="s.kondrashkin" useOpenSSHConfig="true" />
     </configs>
   </component>
 </project>
