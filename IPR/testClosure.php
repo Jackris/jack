@@ -1,13 +1,20 @@
 <?php
-class Math {
-    public function add(int $a, int $b): int {
-        return $a+$b+100;
+
+class Math
+{
+    public function add(int $a, int $b): int
+    {
+        return $a + $b + 100;
     }
-    public static function addStatic(int $a, int $b): int {
-        return $a+$b;
+
+    public static function addStatic(int $a, int $b): int
+    {
+        return $a + $b;
     }
-    public function __invoke(int $a, int $b): int {
-        return ($a+$b)*10;
+
+    public function __invoke(int $a, int $b): int
+    {
+        return ($a + $b) * 10;
     }
 }
 
@@ -20,7 +27,7 @@ strlen(...);
 
 //Массивы
 $n = [$math, 'add'](...);
-print_r($n(5,8));
+print_r($n(5, 8));
 [Math::class, 'addStatic'](...);
 
 //Invokable объекты

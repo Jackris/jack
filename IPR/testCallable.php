@@ -1,11 +1,15 @@
 <?php
-function s(string $text) {
+
+function s(string $text)
+{
     //echo '<pre>';
     print_r($text);
     print_r("\n");
     //echo '</pre>';
 }
-function foo($bar) {
+
+function foo($bar)
+{
     return $bar * 2;
 }
 
@@ -17,3 +21,4 @@ s(assert(
 s(assert(
     4 == $x(2)
 ));
+
