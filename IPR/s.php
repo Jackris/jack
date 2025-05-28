@@ -1,5 +1,5 @@
 <?php
-
+//include '../s.php';
 function s(mixed $text = '')
 {
     //echo '<pre>';

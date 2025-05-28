@@ -22,7 +22,10 @@ class Bar extends Foo
 //print Bar::$Foo_static . "\n";
 $bar = new Bar();
 $foo = new Foo();
-
+Bar::$Foo_static = '55';
 print $bar::fooStatic() . "\n";
 $bar::setVar('hello!');
+
+Bar::$Foo_static = '66';
+print Bar::$Foo_static. "\n";
 print $bar::fooStatic() . "\n";
