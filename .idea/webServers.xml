@@ -23,6 +23,13 @@
           </advancedOptions>
         </fileTransfer>
       </webServer>
+      <webServer id="f01a6c3b-e1e1-44ca-bb6e-762b5d9fcd40" name="vpn">
+        <fileTransfer accessType="SFTP" host="80.74.31.217" port="22" sshConfigId="bf3f5dfe-78b0-413b-80db-6af1cee739f6" sshConfig="root@80.74.31.217:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
     </option>
   </component>
 </project>

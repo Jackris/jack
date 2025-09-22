@@ -7,7 +7,6 @@ function odd($var)
 
 function even($var)
 {
-    print_r($var / 2);
     echo "\n";
     // Функция возвращает информацию о том, чётно ли входное целое число
     return !($var & 1);

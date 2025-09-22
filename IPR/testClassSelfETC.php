@@ -1,10 +1,10 @@
 <?php
 
-class A
+class AClass
 {
     public static function who()
     {
-        echo __CLASS__;
+        echo __CLASS__ . PHP_EOL;
     }
 
     public static function test()
@@ -13,14 +13,14 @@ class A
     }
 }
 
-class B extends A
+class BClass extends AClass
 {
     public static function who()
     {
-        echo __CLASS__;
+        echo __CLASS__ . PHP_EOL;
     }
 }
 
-B::test();
-B::who();
+BClass::test();
+BClass::who();
 ?>

@@ -6,6 +6,7 @@
       <sshConfig host="xn--80ahgjj0bi.xn--p1ai" id="cf013c53-71e6-4afe-bff3-6d4605daf52f" keyPath="C:\Users\Jackris\.ssh\id_rsa" port="1024" nameFormat="DESCRIPTIVE" username="host1816851" useOpenSSHConfig="false" />
       <sshConfig host="185.221.214.75" id="2de35062-121f-44eb-b3e0-9ee965b079d2" keyPath="C:\Users\Jackris\.ssh\key" port="22" nameFormat="DESCRIPTIVE" username="root" useOpenSSHConfig="false" />
       <sshConfig host="mcart-cifra-dev-03.mcart.tech" id="acb87d34-6b6c-49ad-8871-f9b317a32966" keyPath="C:\Users\Jackris\.ssh\sergei.ppk" port="22" nameFormat="DESCRIPTIVE" username="s.kondrashkin" useOpenSSHConfig="true" />
+      <sshConfig authType="PASSWORD" host="80.74.31.217" id="bf3f5dfe-78b0-413b-80db-6af1cee739f6" port="22" nameFormat="DESCRIPTIVE" username="root" useOpenSSHConfig="true" />
     </configs>
   </component>
 </project>
