@@ -7,6 +7,7 @@
       <sshConfig host="185.221.214.75" id="2de35062-121f-44eb-b3e0-9ee965b079d2" keyPath="C:\Users\Jackris\.ssh\key" port="22" nameFormat="DESCRIPTIVE" username="root" useOpenSSHConfig="false" />
       <sshConfig host="mcart-cifra-dev-03.mcart.tech" id="acb87d34-6b6c-49ad-8871-f9b317a32966" keyPath="C:\Users\Jackris\.ssh\sergei.ppk" port="22" nameFormat="DESCRIPTIVE" username="s.kondrashkin" useOpenSSHConfig="true" />
       <sshConfig authType="PASSWORD" host="80.74.31.217" id="bf3f5dfe-78b0-413b-80db-6af1cee739f6" port="22" nameFormat="DESCRIPTIVE" username="root" useOpenSSHConfig="true" />
+      <sshConfig authType="PASSWORD" host="192.168.1.71" id="677c404e-ccce-4a9b-a1f1-e9580f4b25fe" port="22" nameFormat="DESCRIPTIVE" username="root" useOpenSSHConfig="true" />
     </configs>
   </component>
 </project>

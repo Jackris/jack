@@ -30,6 +30,13 @@
           </advancedOptions>
         </fileTransfer>
       </webServer>
+      <webServer id="4928a7a2-9336-40c6-93dc-91b1cd81c54c" name="B24local">
+        <fileTransfer rootFolder="/home/bitrix/www/" accessType="SFTP" host="192.168.1.71" port="22" sshConfigId="677c404e-ccce-4a9b-a1f1-e9580f4b25fe" sshConfig="root@192.168.1.71:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
     </option>
   </component>
 </project>
