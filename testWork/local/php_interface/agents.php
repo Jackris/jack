@@ -18,37 +18,16 @@ class Agents
                 ['ID', 'STAGE_ID', 'DATE_MODIFY']
             );
             $entityDeal = new \CCrmDeal(false);
-            $arFields = ['STAGE_ID' => 'EXPIRED'];
+            $arFields = ['STAGE_ID' => 'EXPIRED', 'COMMENTS' => 'Автоматический перевод из-за просрочки'];
             while ($deal = $resDeals->fetch()) {
                 if ($deal['STAGE_ID'] === 'NEW') {
                     $daysDiff = (strtotime(date('d.m.Y H:i:s')) - strtotime($deal['DATE_MODIFY'])) / 86400;
                     $days = Option::get('crm', self::$OPTION_NAME . $deal['ID'], 0);
-                    \CEventLog::Add([
-                        'SEVERITY' => 'INFO',
-                        'AUDIT_TYPE_ID' => 'CUSTOM_DEAL',
-                        'MODULE_ID' => 'crm',
-                        'DESCRIPTION' => 'NAME - ' . self::$OPTION_NAME,
-                    ]);
                     if ($days > 3 || $daysDiff > 3) {
-                        \CEventLog::Add([
-                            'SEVERITY' => 'INFO',
-                            'AUDIT_TYPE_ID' => 'CUSTOM_DEAL',
-                            'MODULE_ID' => 'crm',
-                            'DESCRIPTION' => $days . ' .Больше 3х дней. Сделка ' . $deal['ID'],
-                        ]);
                         $entityDeal->Update($deal['ID'], $arFields, true, true);
+                        Option::delete('crm', ['name' => self::$OPTION_NAME . $deal['ID']]);
                     } else {
                         Option::set('crm', self::$OPTION_NAME . $deal['ID'], $days + 1);
-                        \CEventLog::Add([
-                            'SEVERITY' => 'INFO',
-                            'AUDIT_TYPE_ID' => 'CUSTOM_DEAL',
-                            'MODULE_ID' => 'crm',
-                            'DESCRIPTION' => $days . ' .Меньше 3х дней. Сделка ' . $deal['ID'] . ' - ' . Option::get(
-                                    'crm',
-                                    self::$OPTION_NAME . $deal['ID'],
-                                    0
-                                ),
-                        ]);
                     }
                 }
             }
