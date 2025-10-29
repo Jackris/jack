@@ -91,6 +91,7 @@ class CrmDealCreate extends \CBitrixComponent implements Controllerable
 
     public function executeComponent()
     {
+        CJSCore::Init(array("popup"));
         $this->includeComponentTemplate();
     }
 }

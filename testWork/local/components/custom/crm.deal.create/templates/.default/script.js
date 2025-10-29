@@ -17,16 +17,13 @@ function createDeal() {
             fields: fields
         },
     }).then(
-        function (response)
-        {
+        function (response) {
             console.log(response);
             if (response.status == 'success') {
-                window.location.href = 'crm/deal/details/'+response.data.newId+'/';
-                //location.reload();
+                window.location.href = 'crm/deal/details/' + response.data.newId + '/';
             }
         },
-        function (response)
-        {
+        function (response) {
             console.log(response);
         }
     );
@@ -34,4 +31,8 @@ function createDeal() {
 
 BX.ready(function () {
     document.querySelector('#create_deal').addEventListener('click', createDeal);
+    
+    let CrmDeal = new BX.Custom.CrmDeal();
+    CrmDeal.createContactDialog();
+
 });

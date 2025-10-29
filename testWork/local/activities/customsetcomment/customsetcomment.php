@@ -33,10 +33,9 @@ class CBPCustomSetComment extends CBPActivity
 
             $entityDeal = new \CCrmDeal(false);
             $resultFields = ['COMMENTS' => $commentText];
-            if ($entityDeal->Update($dealId, $resultFields, true, true)) {
-                $checkExceptions = $entityDeal->GetCheckExceptions();
-                $errorMessage = $entityDeal->LAST_ERROR;
-                throw new Exception('Не указан ID сделки');
+            if (!$entityDeal->Update($dealId, $resultFields, true, true)) {
+                $this->errorMessage = $entityDeal->GetCheckExceptions();
+                throw new Exception($this->errorMessage);
             }
         } catch (Exception $e) {
             $this->writeToTrackingService($e->getMessage(), 0, CBPTrackingType::Error);
